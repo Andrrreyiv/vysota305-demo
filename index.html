@@ -19,7 +19,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preload" href="assets/fonts/unbounded-cyrillic-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/montserrat-cyrillic-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" fetchpriority="high" imagesrcset="assets/img/hero-640.webp 640w, assets/img/hero-960.webp 960w, assets/img/hero-1280.webp 1280w" imagesizes="(min-width: 1200px) 420px, (min-width: 980px) 34vw, (min-width: 640px) 584px, calc(100vw - 96px)">
+<link rel="preload" as="image" fetchpriority="high" imagesrcset="assets/img/hero-640.webp 640w, assets/img/hero-960.webp 960w, assets/img/hero-1280.webp 1280w" imagesizes="(min-width: 1200px) 430px, (min-width: 980px) 34vw, (min-width: 640px) 520px, calc(100vw - 96px)">
 <link rel="stylesheet" href="assets/css/styles.css">
 <script>document.documentElement.classList.add('js')</script>
 <script src="assets/js/main.js" defer></script>
@@ -31,8 +31,9 @@
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
   <symbol id="i-phone" viewBox="0 0 24 24"><path d="M21 16.4v3a2 2 0 0 1-2.2 2 19.6 19.6 0 0 1-8.5-3 19.3 19.3 0 0 1-6-6 19.6 19.6 0 0 1-3-8.6A2 2 0 0 1 3.3 1.6h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L7.3 9.3a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2.1z"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+  <symbol id="i-ball" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2v20M5.3 4.6c3.4 3.6 3.4 11.2 0 14.8M18.7 4.6c-3.4 3.6-3.4 11.2 0 14.8"/></symbol>
 </svg>
-<header class="header">
+<header class="header" data-tilda="Стандартный блок · меню, тёмный фон при прокрутке">
   <div class="container header__in">
     <a class="logo" href="#top" aria-label="Школа баскетбола «Высота 3.05», на главную">
       <img src="assets/img/logo-light.png" width="238" height="200" alt="">
@@ -69,7 +70,10 @@
 
 <main id="main">
 
-<section class="hero" aria-labelledby="hero-title">
+<section class="hero" aria-labelledby="hero-title" data-tilda="Zero Block · пошаговая анимация «блок на экране», параллакс от мыши, тултип, цикл">
+  <div class="hero__bg" aria-hidden="true">
+    <span class="hero__num" data-mouse="-24">3,05</span>
+  </div>
   <div class="container hero__grid">
     <div class="hero__text" data-stagger>
       <p class="eyebrow">Школа баскетбола «Высота 3.05» · Москва и область</p>
@@ -86,21 +90,28 @@
       </ul>
     </div>
     <div class="hero__media">
-      <div class="scale" aria-hidden="true">
-        <div class="scale__track"><div class="scale__fill"></div></div>
-        <span class="scale__tick" style="--v:0">0</span>
-        <span class="scale__tick" style="--v:1">1 м</span>
-        <span class="scale__tick" style="--v:2">2 м</span>
-        <div class="scale__rise"><span class="scale__mark"><span class="scale__value"><span data-height>3,05</span> м</span></span></div>
-      </div>
+      <span class="hero__frame" aria-hidden="true" data-mouse="10"></span>
       <figure class="hero__photo">
-        <img src="assets/img/hero-960.webp" srcset="assets/img/hero-640.webp 640w, assets/img/hero-960.webp 960w, assets/img/hero-1280.webp 1280w" sizes="(min-width: 1200px) 420px, (min-width: 980px) 34vw, (min-width: 640px) 584px, calc(100vw - 96px)" width="640" height="853" fetchpriority="high" alt="Воспитанник школы ведёт мяч на турнире в Саларьево">
+        <img src="assets/img/hero-960.webp" srcset="assets/img/hero-640.webp 640w, assets/img/hero-960.webp 960w, assets/img/hero-1280.webp 1280w" sizes="(min-width: 1200px) 430px, (min-width: 980px) 34vw, (min-width: 640px) 520px, calc(100vw - 96px)" width="640" height="853" fetchpriority="high" alt="Воспитанник школы ведёт мяч на турнире в Саларьево">
       </figure>
+      <div class="scale">
+        <div class="scale__track" aria-hidden="true"><div class="scale__fill"></div></div>
+        <span class="scale__tick" style="--v:0" aria-hidden="true">0</span>
+        <span class="scale__tick" style="--v:1" aria-hidden="true">1 м</span>
+        <span class="scale__tick" style="--v:2" aria-hidden="true">2 м</span>
+        <div class="scale__rise">
+          <span class="scale__mark">
+            <button class="scale__value" type="button" aria-describedby="tip-305"><span data-height>3,05</span> м</button>
+            <span class="tip" id="tip-305" role="tooltip">Высота баскетбольного кольца. Отсюда и название школы.</span>
+          </span>
+        </div>
+      </div>
     </div>
   </div>
+  <a class="hero__hint" href="#schools"><span class="hero__ball" aria-hidden="true"><svg class="i"><use href="#i-ball"/></svg></span>Листайте</a>
 </section>
 
-<div class="ticker" aria-label="События школы">
+<div class="ticker" aria-label="События школы" data-tilda="Zero Block · пошаговая анимация «цикл»: бегущая строка">
   <div class="ticker__track">
     <ul class="ticker__list">
       <li>Мастер-классы в школах</li>
@@ -121,96 +132,117 @@
   </div>
 </div>
 
-<section class="section" id="schools" aria-labelledby="cases-title">
+<section class="section cases" id="schools" aria-labelledby="cases-title" data-tilda="Zero Block · появление при прокрутке, пошаговая анимация «наведение»">
   <div class="container">
-    <div class="section-head reveal">
-      <p class="eyebrow">Для школ</p>
-      <h2 class="h2" id="cases-title">Где мы уже работали</h2>
+    <div class="section-head section-head--split reveal">
+      <div>
+        <p class="eyebrow">Для школ</p>
+        <h2 class="h2" id="cases-title">Где мы уже работали</h2>
+      </div>
       <p class="lead">Мастер-классы и секции в школах. О каждом выезде есть новость с фотографиями.</p>
     </div>
-    <ul class="cards cards--4" data-stagger>
-      <li><a class="card" href="news/master-klass-vasiliy-velikiy.html">
-        <div class="card__media"><img src="assets/img/case-vasiliy-480.webp" srcset="assets/img/case-vasiliy-480.webp 480w, assets/img/case-vasiliy-800.webp 800w" sizes="(min-width: 1200px) 282px, (min-width: 640px) 46vw, calc(100vw - 40px)" width="480" height="360" loading="lazy" decoding="async" alt="Мастер-класс в гимназии Святителя Василия Великого"></div>
-        <div class="card__body">
-          <p class="card__meta">Мастер-классы и филиал</p>
-          <h3 class="card__title">Гимназия Святителя Василия Великого</h3>
-          <p class="card__text">20 мастер-классов за 4 дня. После них в гимназии открылся наш филиал.</p>
-          <span class="card__more">Читать новость<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></span>
-        </div>
-      </a></li>
-      <li><a class="card" href="news/master-klass-cis.html">
-        <div class="card__media"><img src="assets/img/case-cis-480.webp" srcset="assets/img/case-cis-480.webp 480w, assets/img/case-cis-800.webp 800w" sizes="(min-width: 1200px) 282px, (min-width: 640px) 46vw, calc(100vw - 40px)" width="480" height="360" loading="lazy" decoding="async" alt="Мастер-класс в Cambridge International School"></div>
-        <div class="card__body">
-          <p class="card__meta">Мастер-класс</p>
-          <h3 class="card__title">Cambridge International School</h3>
-          <p class="card__text">Мастер-класс и эстафеты полностью на английском языке: двойная польза для ума и для тела.</p>
-          <span class="card__more">Читать новость<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></span>
-        </div>
-      </a></li>
-      <li><a class="card" href="news/master-klass-lomonosov.html">
-        <div class="card__media"><img src="assets/img/case-lomonosov-452.webp" width="452" height="339" loading="lazy" decoding="async" alt="Мастер-класс в Ломоносовской школе № 5"></div>
-        <div class="card__body">
-          <p class="card__meta">Мастер-класс</p>
-          <h3 class="card__title">Ломоносовская школа № 5</h3>
-          <p class="card__text">Занятие для всех желающих. Фёдор рассказал истории из своей карьеры и сыграл с детьми 1 на 1.</p>
-          <span class="card__more">Читать новость<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></span>
-        </div>
-      </a></li>
-      <li><a class="card" href="news/tihiy-basketbol-2024.html">
-        <div class="card__media"><img src="assets/img/case-2124-480.webp" srcset="assets/img/case-2124-480.webp 480w, assets/img/case-2124-800.webp 800w" sizes="(min-width: 1200px) 282px, (min-width: 640px) 46vw, calc(100vw - 40px)" width="480" height="360" loading="lazy" decoding="async" alt="Тренировка секции «Тихий баскетбол» в школе № 2124"></div>
-        <div class="card__body">
-          <p class="card__meta">Тихий баскетбол</p>
-          <h3 class="card__title">Школа № 2124</h3>
-          <p class="card__text">Секция адаптивного баскетбола по проекту РФБ «Тихий баскетбол» для детей с особенностями ментального развития.</p>
-          <span class="card__more">Читать новость<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></span>
-        </div>
-      </a></li>
-    </ul>
+    <div class="jrows">
+      <div class="jrow" data-stagger>
+        <a class="case" href="news/master-klass-vasiliy-velikiy.html" style="--r:1.803">
+          <span class="case__img"><img src="assets/img/case-vasiliy-640.webp" srcset="assets/img/case-vasiliy-640.webp 640w, assets/img/case-vasiliy-1280.webp 1280w" sizes="(min-width: 1200px) 693px, (min-width: 640px) 58vw, calc(100vw - 40px)" width="640" height="355" loading="lazy" decoding="async" alt="Мастер-класс в спортзале гимназии Святителя Василия Великого"></span>
+          <span class="case__body">
+            <span class="case__n" aria-hidden="true">01</span>
+            <span class="case__meta">Мастер-классы и филиал</span>
+            <span class="case__title">Гимназия Святителя Василия Великого</span>
+            <span class="case__text">20 мастер-классов за 4 дня. После них в гимназии открылся наш филиал.</span>
+            <span class="case__more">Читать новость<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+          </span>
+        </a>
+        <a class="case" href="news/master-klass-lomonosov.html" style="--r:1.258">
+          <span class="case__img"><img src="assets/img/case-lomonosov-453.webp" width="453" height="360" loading="lazy" decoding="async" alt="Мастер-класс в Ломоносовской школе № 5"></span>
+          <span class="case__body">
+            <span class="case__n" aria-hidden="true">02</span>
+            <span class="case__meta">Мастер-класс</span>
+            <span class="case__title">Ломоносовская школа №&nbsp;5</span>
+            <span class="case__text">Занятие для всех желающих. Фёдор рассказал истории из своей карьеры и сыграл с детьми 1&nbsp;на&nbsp;1.</span>
+            <span class="case__more">Читать новость<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+          </span>
+        </a>
+      </div>
+      <div class="jrow" data-stagger>
+        <a class="case" href="news/master-klass-cis.html" style="--r:1.455">
+          <span class="case__img"><img src="assets/img/case-cis-640.webp" srcset="assets/img/case-cis-640.webp 640w, assets/img/case-cis-1280.webp 1280w" sizes="(min-width: 1200px) 614px, (min-width: 640px) 52vw, calc(100vw - 40px)" width="640" height="440" loading="lazy" decoding="async" alt="Мастер-класс в Cambridge International School"></span>
+          <span class="case__body">
+            <span class="case__n" aria-hidden="true">03</span>
+            <span class="case__meta">Мастер-класс на английском</span>
+            <span class="case__title">Cambridge International School</span>
+            <span class="case__text">Мастер-класс и эстафеты полностью на английском языке: двойная польза для ума и для тела.</span>
+            <span class="case__more">Читать новость<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+          </span>
+        </a>
+        <a class="case" href="news/tihiy-basketbol-2024.html" style="--r:1.333">
+          <span class="case__img"><img src="assets/img/case-2124-640.webp" srcset="assets/img/case-2124-640.webp 640w, assets/img/case-2124-1280.webp 1280w" sizes="(min-width: 1200px) 562px, (min-width: 640px) 48vw, calc(100vw - 40px)" width="640" height="480" loading="lazy" decoding="async" alt="Тренировка секции «Тихий баскетбол» в школе № 2124"></span>
+          <span class="case__body">
+            <span class="case__n" aria-hidden="true">04</span>
+            <span class="case__meta">Тихий баскетбол</span>
+            <span class="case__title">Школа №&nbsp;2124</span>
+            <span class="case__text">Секция адаптивного баскетбола по проекту РФБ «Тихий баскетбол» для детей с особенностями ментального развития.</span>
+            <span class="case__more">Читать новость<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></span>
+          </span>
+        </a>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="section" id="how" aria-labelledby="steps-title">
+<section class="section steps-sec" id="how" aria-labelledby="steps-title" data-tilda="Zero Block · фиксация фото при прокрутке, пошаговая анимация «при скролле»: мяч катится по шагам">
   <div class="container steps">
-    <figure class="steps__media reveal">
-      <img src="assets/img/steps-480.webp" srcset="assets/img/steps-480.webp 480w, assets/img/steps-800.webp 800w" sizes="(min-width: 980px) 486px, (min-width: 640px) 576px, calc(100vw - 40px)" width="480" height="600" loading="lazy" decoding="async" alt="Тренер объясняет задание детям в спортзале">
-    </figure>
+    <div class="steps__media">
+      <figure class="steps__sticky reveal">
+        <img src="assets/img/steps-480.webp" srcset="assets/img/steps-480.webp 480w, assets/img/steps-960.webp 960w" sizes="(min-width: 980px) 486px, (min-width: 640px) 480px, calc(100vw - 40px)" width="480" height="640" loading="lazy" decoding="async" alt="Тренер даёт детям установку перед игрой">
+        <figcaption>Установка перед игрой. Турнир в Саларьево</figcaption>
+      </figure>
+    </div>
     <div class="steps__content">
       <div class="section-head reveal">
         <p class="eyebrow">Для директоров</p>
         <h2 class="h2" id="steps-title">Как секция появляется в вашей школе</h2>
       </div>
-      <ol data-stagger>
-        <li class="step">
-          <span class="step__num">01</span>
-          <div><h3 class="step__title">Мастер-класс для учеников</h3>
-          <p class="step__text">Тренер приезжает к вам и проводит открытое занятие. Дети пробуют баскетбол, вы видите, как мы работаем.</p></div>
-        </li>
-        <li class="step">
-          <span class="step__num">02</span>
-          <div><h3 class="step__title">Группы по классам</h3>
-          <p class="step__text">Набираем группы 1-4, 5-7 и 8-11 класса. Опыт не нужен, начать можно с нуля.</p></div>
-        </li>
-        <li class="step">
-          <span class="step__num">03</span>
-          <div><h3 class="step__title">Тренировки в школьном зале</h3>
-          <p class="step__text">Занятия проходят в вашем спортзале, ехать никуда не надо.</p></div>
-        </li>
-        <li class="step">
-          <span class="step__num">04</span>
-          <div><h3 class="step__title">Турниры и сборы</h3>
-          <p class="step__text">Воспитанники играют в МЛБЛ, на турнирах 3х3 на ВДНХ и в Саларьево, летом едут на сборы.</p></div>
-        </li>
-      </ol>
-      <a class="btn btn--dark steps__cta reveal" href="#form" data-mode="school">Обсудить секцию в вашей школе<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      <div class="track">
+        <div class="track__line" aria-hidden="true">
+          <span class="track__ball"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#FAF7F2"/><g fill="none" stroke="#C23B34" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2v20M5.3 4.6c3.4 3.6 3.4 11.2 0 14.8M18.7 4.6c-3.4 3.6-3.4 11.2 0 14.8"/></g></svg></span>
+        </div>
+        <ol class="track__list">
+          <li class="step">
+            <span class="step__num">01</span>
+            <div><h3 class="step__title">Мастер-класс для учеников</h3>
+            <p class="step__text">Тренер приезжает к вам и проводит открытое занятие. Дети пробуют баскетбол, вы видите, как мы работаем.</p></div>
+          </li>
+          <li class="step">
+            <span class="step__num">02</span>
+            <div><h3 class="step__title">Группы по классам</h3>
+            <p class="step__text">Набираем группы 1-4, 5-7 и 8-11 класса. Опыт не нужен, начать можно с нуля.</p></div>
+          </li>
+          <li class="step">
+            <span class="step__num">03</span>
+            <div><h3 class="step__title">Тренировки в школьном зале</h3>
+            <p class="step__text">Занятия проходят в вашем спортзале, ехать никуда не надо.</p></div>
+          </li>
+          <li class="step">
+            <span class="step__num">04</span>
+            <div><h3 class="step__title">Турниры и сборы</h3>
+            <p class="step__text">Воспитанники играют в МЛБЛ, на турнирах 3х3 на ВДНХ и в Саларьево, летом едут на сборы.</p></div>
+          </li>
+        </ol>
+      </div>
+      <a class="btn btn--light steps__cta reveal" href="#form" data-mode="school">Обсудить секцию в вашей школе<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </div>
   </div>
 </section>
 
-<section class="section on-ink" id="coach" aria-labelledby="coach-title">
+<section class="section on-ink coach" id="coach" aria-labelledby="coach-title" data-tilda="Zero Block · параллакс при прокрутке, пошаговая анимация «при скролле»: текст едет вслед за прокруткой">
+  <div class="runline" aria-hidden="true"><span class="runline__text" data-scroll-x="0.3">Мастер спорта международного класса · 15 лет на профессиональном уровне · Мастер спорта международного класса ·</span></div>
   <div class="container coach__grid">
-    <figure class="coach__photo reveal">
-      <img src="assets/img/coach-480.webp" srcset="assets/img/coach-480.webp 480w, assets/img/coach-680.webp 680w" sizes="(min-width: 980px) 486px, (min-width: 640px) 520px, calc(100vw - 40px)" width="480" height="600" loading="lazy" decoding="async" alt="Фёдор Лихолитов с мячом">
-    </figure>
+    <div class="coach__media">
+      <figure class="coach__photo" data-speed="-0.06">
+        <img src="assets/img/coach-480.webp" srcset="assets/img/coach-480.webp 480w, assets/img/coach-852.webp 852w" sizes="(min-width: 980px) 486px, (min-width: 640px) 480px, calc(100vw - 40px)" width="480" height="480" loading="lazy" decoding="async" alt="Фёдор Лихолитов с мячом">
+      </figure>
+    </div>
     <div class="coach__content">
       <div class="reveal">
         <p class="eyebrow">Тренер</p>
@@ -219,78 +251,78 @@
         <p class="coach__stat"><b data-count="15">15</b><span>лет на профессиональном уровне</span></p>
       </div>
       <ul class="regalia" data-stagger>
-        <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Чемпион Суперлиги (Россия)</li>
-        <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Обладатель Кубка России</li>
-        <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Чемпион УЛЕБ (Европа)</li>
-        <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Чемпион ФИБА (Европа)</li>
-        <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Обладатель Кубка Греции</li>
-        <li><svg class="i" aria-hidden="true"><use href="#i-check"/></svg>Игрок сборной России</li>
+        <li>Чемпион Суперлиги (Россия)</li>
+        <li>Обладатель Кубка России</li>
+        <li>Чемпион УЛЕБ (Европа)</li>
+        <li>Чемпион ФИБА (Европа)</li>
+        <li>Обладатель Кубка Греции</li>
+        <li>Игрок сборной России</li>
       </ul>
     </div>
   </div>
 </section>
 
-<section class="section" id="about" aria-labelledby="about-title">
-  <div class="container">
-    <div class="about__grid">
-      <figure class="about__media reveal">
-        <img src="assets/img/about-chess-480.webp" srcset="assets/img/about-chess-480.webp 480w, assets/img/about-chess-800.webp 800w" sizes="(min-width: 980px) 486px, (min-width: 640px) 576px, calc(100vw - 40px)" width="480" height="600" loading="lazy" decoding="async" alt="Воспитанники играют в шахматы в летнем лагере">
-        <figcaption>Летний лагерь 2024</figcaption>
+<section class="section about" id="about" aria-labelledby="about-title" data-tilda="Zero Block · параллакс при прокрутке: фото и фигура движутся с разной скоростью; счётчики кодом">
+  <div class="container about__grid">
+    <div class="collage">
+      <figure class="collage__team" data-speed="-0.04">
+        <img src="assets/img/about-team-640.webp" srcset="assets/img/about-team-640.webp 640w, assets/img/about-team-1280.webp 1280w" sizes="(min-width: 980px) 494px, 84vw" width="640" height="480" loading="lazy" decoding="async" alt="Команда школы на летних сборах 2025">
       </figure>
-      <div class="about__text reveal">
-        <p class="eyebrow">О школе</p>
-        <h2 class="h2" id="about-title">Баскетбол называют коллективными шахматами</h2>
-        <div style="margin-top:24px">
-          <p class="first">Школа баскетбола «Высота 3.05» основана баскетболистами, имеющими многолетнюю практику выступлений за команды в России, Европе, Америке, а также основную команду сборной России.</p>
-          <p>Задача нашего проекта не только передача баскетбольных знаний и навыков нашим воспитанникам, но и развитие командного духа, обучение взаимодействию в коллективе. Профессионально выстроенный тренировочный процесс также позволяет выявить лидерские качества у детей.</p>
-          <p>Мы учим наших учеников нестандартному мышлению через баскетбол, не зря многие сравнивают этот вид спорта с коллективными шахматами!</p>
-        </div>
+      <span class="collage__shape" aria-hidden="true" data-speed="0.12"></span>
+      <figure class="collage__chess" data-speed="0.07">
+        <img src="assets/img/about-chess-480.webp" srcset="assets/img/about-chess-480.webp 480w, assets/img/about-chess-800.webp 800w" sizes="(min-width: 980px) 236px, 40vw" width="480" height="640" loading="lazy" decoding="async" alt="Воспитанники играют в шахматы в летнем лагере">
+      </figure>
+      <p class="collage__cap">Летние сборы 2025 и шахматы в летнем лагере 2024</p>
+    </div>
+    <div class="about__text reveal">
+      <p class="eyebrow">О школе</p>
+      <h2 class="h2" id="about-title">Баскетбол называют коллективными шахматами</h2>
+      <div class="about__body">
+        <p class="first">Школа баскетбола «Высота 3.05» основана баскетболистами, имеющими многолетнюю практику выступлений за команды в России, Европе, Америке, а также основную команду сборной России.</p>
+        <p>Задача нашего проекта не только передача баскетбольных знаний и навыков нашим воспитанникам, но и развитие командного духа, обучение взаимодействию в коллективе. Профессионально выстроенный тренировочный процесс также позволяет выявить лидерские качества у детей.</p>
+        <p>Мы учим наших учеников нестандартному мышлению через баскетбол, не зря многие сравнивают этот вид спорта с коллективными шахматами!</p>
       </div>
     </div>
-    <ul class="stats" data-stagger>
-      <li class="stat"><b data-count="15">15</b><span>лет тренер играл на профессиональном уровне</span></li>
-      <li class="stat"><b data-count="20">20</b><span>мастер-классов за 4 дня в одной гимназии</span></li>
-      <li class="stat"><b data-count="3">3</b><span>возрастные группы, с 1 по 11 класс</span></li>
-      <li class="stat"><b data-count="7">7</b><span>школ, где мы проводили занятия</span></li>
-    </ul>
   </div>
+  <ul class="container stats" data-stagger>
+    <li class="stat"><b data-count="4">4</b><span>филиала в школах</span></li>
+    <li class="stat"><b data-count="20">20</b><span>мастер-классов за 4 дня в одной гимназии</span></li>
+    <li class="stat"><b data-count="3">3</b><span>возрастные группы, с 1 по 11 класс</span></li>
+    <li class="stat"><b data-count="7">7</b><span>школ, где мы проводили занятия</span></li>
+  </ul>
 </section>
 
-<section class="section groups" id="groups" aria-labelledby="groups-title">
+<section class="section groups" id="groups" aria-labelledby="groups-title" data-tilda="Стандартный блок карточек · на телефоне листаются вбок">
   <div class="container">
-    <div class="section-head reveal">
-      <p class="eyebrow">Возрастные группы</p>
-      <h2 class="h2" id="groups-title">Три группы по возрасту</h2>
+    <div class="section-head section-head--split reveal">
+      <div>
+        <p class="eyebrow">Возрастные группы</p>
+        <h2 class="h2" id="groups-title">Три группы по возрасту</h2>
+      </div>
       <p class="lead">Первая тренировка бесплатно. Нагрузка и формат занятий подобраны под возраст.</p>
     </div>
-    <ul class="cards cards--3" data-stagger>
-      <li><div class="card">
-        <div class="card__media"><span class="chip">1-4 класс</span><img src="assets/img/group-junior-480.webp" srcset="assets/img/group-junior-480.webp 480w, assets/img/group-junior-800.webp 800w" sizes="(min-width: 1200px) 384px, (min-width: 980px) 31vw, (min-width: 640px) 40vw, calc(100vw - 40px)" width="480" height="600" loading="lazy" decoding="async" alt="Младшая группа на тренировке"></div>
-        <div class="card__body">
-          <h3 class="card__title">Младшая группа</h3>
-          <p class="card__text">Акцент идёт на физическое развитие детей. Тренировки проходят в игровом формате: основы баскетбола, эстафеты, игры на внимание, элементы ОФП.</p>
-        </div>
-      </div></li>
-      <li><div class="card">
-        <div class="card__media"><span class="chip">5-7 класс</span><img src="assets/img/group-middle-480.webp" srcset="assets/img/group-middle-480.webp 480w, assets/img/group-middle-800.webp 800w" sizes="(min-width: 1200px) 384px, (min-width: 980px) 31vw, (min-width: 640px) 40vw, calc(100vw - 40px)" width="480" height="600" loading="lazy" decoding="async" alt="Средняя группа отрабатывает бросок"></div>
-        <div class="card__body">
-          <h3 class="card__title">Средняя группа</h3>
-          <p class="card__text">Формат занятий обучающий: в этом возрасте дети физически способны разучить баскетбольные элементы, даже если раньше не было опыта в этом виде спорта.</p>
-        </div>
-      </div></li>
-      <li><div class="card">
-        <div class="card__media"><span class="chip">8-11 класс</span><img src="assets/img/group-senior-480.webp" srcset="assets/img/group-senior-480.webp 480w, assets/img/group-senior-800.webp 800w" sizes="(min-width: 1200px) 384px, (min-width: 980px) 31vw, (min-width: 640px) 40vw, calc(100vw - 40px)" width="480" height="600" loading="lazy" decoding="async" alt="Старшая группа играет в 3х3 на ВДНХ"></div>
-        <div class="card__body">
-          <h3 class="card__title">Старшая группа</h3>
-          <p class="card__text">Дети уже обладают определёнными навыками, и тренировки нацелены на оттачивание мастерства, а также игры 3х3, 5х5, ОФП.</p>
-        </div>
-      </div></li>
+    <ul class="swipe" data-stagger>
+      <li class="gcard">
+        <div class="gcard__img"><img src="assets/img/group-junior-480.webp" srcset="assets/img/group-junior-480.webp 480w, assets/img/group-junior-800.webp 800w" sizes="(min-width: 980px) 384px, 340px" width="480" height="640" loading="lazy" decoding="async" alt="Младшая группа на тренировке"><span class="chip">1-4 класс</span></div>
+        <h3 class="gcard__title">Младшая группа</h3>
+        <p class="gcard__text">Акцент идёт на физическое развитие детей. Тренировки проходят в игровом формате: основы баскетбола, эстафеты, игры на внимание, элементы ОФП.</p>
+      </li>
+      <li class="gcard">
+        <div class="gcard__img"><img src="assets/img/group-middle-480.webp" srcset="assets/img/group-middle-480.webp 480w, assets/img/group-middle-800.webp 800w" sizes="(min-width: 980px) 384px, 340px" width="480" height="640" loading="lazy" decoding="async" alt="Средняя группа отрабатывает бросок"><span class="chip">5-7 класс</span></div>
+        <h3 class="gcard__title">Средняя группа</h3>
+        <p class="gcard__text">Формат занятий обучающий: в этом возрасте дети физически способны разучить баскетбольные элементы, даже если раньше не было опыта в этом виде спорта.</p>
+      </li>
+      <li class="gcard">
+        <div class="gcard__img"><img src="assets/img/group-senior-480.webp" srcset="assets/img/group-senior-480.webp 480w, assets/img/group-senior-800.webp 800w" sizes="(min-width: 980px) 384px, 340px" width="480" height="640" loading="lazy" decoding="async" alt="Старшая группа играет в 3х3 на ВДНХ"><span class="chip">8-11 класс</span></div>
+        <h3 class="gcard__title">Старшая группа</h3>
+        <p class="gcard__text">Дети уже обладают определёнными навыками, и тренировки нацелены на оттачивание мастерства, а также игры 3х3, 5х5, ОФП.</p>
+      </li>
     </ul>
     <a class="btn btn--primary groups__cta reveal" href="#form" data-mode="parent">Записать ребёнка на пробную<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
   </div>
 </section>
 
-<section class="section" id="news" aria-labelledby="news-title">
+<section class="section news" id="news" aria-labelledby="news-title" data-tilda="Потоки Тильды · новости добавляет сама клиентка">
   <div class="container">
     <div class="section-head section-head--row reveal">
       <div>
@@ -299,46 +331,45 @@
       </div>
       <a class="link-more" href="news/index.html">Все новости<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></a>
     </div>
-    <ul class="cards cards--3" data-stagger>
+    <ul class="swipe" data-stagger>
 <!-- news-cards:start -->
-      <li><a class="card" href="news/sbory-2026.html">
-        <div class="card__media"><img src="assets/img/news/sbory-2026-card-480.webp" srcset="assets/img/news/sbory-2026-card-480.webp 480w, assets/img/news/sbory-2026-card-800.webp 800w" sizes="(min-width: 1200px) 384px, (min-width: 980px) 31vw, (min-width: 640px) 40vw, calc(100vw - 40px)" width="480" height="360" loading="lazy" decoding="async" alt="Летние сборы 2026"></div>
-        <div class="card__body">
-          <time class="card__meta" datetime="2026-07-31">Июль 2026</time>
-          <h3 class="card__title">Летние сборы 2026</h3>
-          <p class="card__text">Традиционные летние сборы получились интересными, насыщенными и продуктивными. Все ребята прибавили в командном понимании игры и в индивидуальном мастерстве.</p>
-          <span class="card__more">Читать<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></span>
-        </div>
+      <li class="ncard" style="--r:0.750"><a class="ncard__link" href="news/sbory-2026.html">
+        <span class="ncard__img"><img src="assets/img/news/sbory-2026-card-480.webp" srcset="assets/img/news/sbory-2026-card-480.webp 480w, assets/img/news/sbory-2026-card-800.webp 800w" sizes="(min-width: 980px) 384px, 340px" width="480" height="640" loading="lazy" decoding="async" alt="Летние сборы 2026"></span>
+        <time class="ncard__date" datetime="2026-07-31">Июль 2026</time>
+        <h3 class="ncard__title">Летние сборы 2026</h3>
+        <span class="ncard__text">Традиционные летние сборы получились интересными, насыщенными и продуктивными. Все ребята прибавили в командном понимании игры и в индивидуальном мастерстве.</span>
+        <span class="ncard__more">Читать<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></span>
       </a></li>
-      <li><a class="card" href="news/vdnh-3x3-2026.html">
-        <div class="card__media"><img src="assets/img/news/vdnh-3x3-2026-card-480.webp" srcset="assets/img/news/vdnh-3x3-2026-card-480.webp 480w, assets/img/news/vdnh-3x3-2026-card-800.webp 800w" sizes="(min-width: 1200px) 384px, (min-width: 980px) 31vw, (min-width: 640px) 40vw, calc(100vw - 40px)" width="480" height="360" loading="lazy" decoding="async" alt="Турнир 3х3 на ВДНХ"></div>
-        <div class="card__body">
-          <time class="card__meta" datetime="2026-05-17">Май 2026</time>
-          <h3 class="card__title">Турнир 3х3 на ВДНХ</h3>
-          <p class="card__text">Май. Солнце. ВДНХ. Баскетбол. Турнир 3х3 для наших воспитанников на официальной площадке. Спасибо РФБ за предоставленную возможность.</p>
-          <span class="card__more">Читать<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></span>
-        </div>
+      <li class="ncard" style="--r:0.750"><a class="ncard__link" href="news/vdnh-3x3-2026.html">
+        <span class="ncard__img"><img src="assets/img/news/vdnh-3x3-2026-card-480.webp" srcset="assets/img/news/vdnh-3x3-2026-card-480.webp 480w, assets/img/news/vdnh-3x3-2026-card-800.webp 800w" sizes="(min-width: 980px) 384px, 340px" width="480" height="640" loading="lazy" decoding="async" alt="Турнир 3х3 на ВДНХ"></span>
+        <time class="ncard__date" datetime="2026-05-17">Май 2026</time>
+        <h3 class="ncard__title">Турнир 3х3 на ВДНХ</h3>
+        <span class="ncard__text">Май. Солнце. ВДНХ. Баскетбол. Турнир 3х3 для наших воспитанников на официальной площадке. Спасибо РФБ за предоставленную возможность.</span>
+        <span class="ncard__more">Читать<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></span>
       </a></li>
-      <li><a class="card" href="news/salarevo-2025.html">
-        <div class="card__media"><img src="assets/img/news/salarevo-2025-card-480.webp" srcset="assets/img/news/salarevo-2025-card-480.webp 480w, assets/img/news/salarevo-2025-card-800.webp 800w" sizes="(min-width: 1200px) 384px, (min-width: 980px) 31vw, (min-width: 640px) 40vw, calc(100vw - 40px)" width="480" height="360" loading="lazy" decoding="async" alt="Стартовал турнир в Саларьево"></div>
-        <div class="card__body">
-          <time class="card__meta" datetime="2025-11-01">Ноябрь 2025</time>
-          <h3 class="card__title">Стартовал турнир в Саларьево</h3>
-          <p class="card__text">Начинаем турнир в Саларьево, который продлится до мая 2026 года, в группах 2016-2017, 2014-2015 и 2011-2012 годов рождения. Удачи нашим юным спортсменам!</p>
-          <span class="card__more">Читать<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></span>
-        </div>
+      <li class="ncard" style="--r:0.750"><a class="ncard__link" href="news/salarevo-2025.html">
+        <span class="ncard__img"><img src="assets/img/news/salarevo-2025-card-480.webp" srcset="assets/img/news/salarevo-2025-card-480.webp 480w, assets/img/news/salarevo-2025-card-800.webp 800w" sizes="(min-width: 980px) 384px, 340px" width="480" height="640" loading="lazy" decoding="async" alt="Стартовал турнир в Саларьево"></span>
+        <time class="ncard__date" datetime="2025-11-01">Ноябрь 2025</time>
+        <h3 class="ncard__title">Стартовал турнир в Саларьево</h3>
+        <span class="ncard__text">Начинаем турнир в Саларьево, который продлится до мая 2026 года, в группах 2016-2017, 2014-2015 и 2011-2012 годов рождения. Удачи нашим юным спортсменам!</span>
+        <span class="ncard__more">Читать<svg class="i" aria-hidden="true"><use href="#i-arrow"/></svg></span>
       </a></li>
 <!-- news-cards:end -->
     </ul>
   </div>
 </section>
 
-<section class="section on-ink" id="contacts" aria-labelledby="contacts-title">
+<section class="section on-ink contact" id="contacts" aria-labelledby="contacts-title" data-tilda="Стандартный блок формы · заявки на почту и в Телеграм; линии площадки: Zero Block, параллакс">
+  <svg class="contact__court" aria-hidden="true" data-speed="0.1" viewBox="0 0 1000 640" fill="none" stroke="currentColor" stroke-width="1.5">
+    <path d="M60 0v260a440 440 0 0 0 880 0V0"/>
+    <rect x="350" y="0" width="300" height="260"/>
+    <circle cx="500" cy="260" r="110"/>
+  </svg>
   <div class="container contact__grid">
     <div class="contact__info reveal">
       <p class="eyebrow">Контакты</p>
       <h2 class="h2" id="contacts-title">Обсудим секцию или запишем ребёнка</h2>
-      <p class="lead" style="margin-top:16px">Оставьте заявку, и мы перезвоним. Или позвоните сами:</p>
+      <p class="lead">Оставьте заявку, и мы перезвоним. Или позвоните сами:</p>
       <div class="phones">
         <a href="tel:+79219244929"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>+7 (921) 924-49-29</a>
         <a href="tel:+79037313232"><svg class="i" aria-hidden="true"><use href="#i-phone"/></svg>+7 (903) 731-32-32</a>
@@ -349,7 +380,7 @@
           <li>Гимназия им. Е. М. Примакова</li>
           <li>Хорошёвская школа</li>
           <li>Областной Технолицей им. В. И. Долгих</li>
-          <li>Школа № 2124, центр развития и коррекции</li>
+          <li>Школа №&nbsp;2124, центр развития и коррекции</li>
         </ul>
       </div>
     </div>
@@ -392,12 +423,13 @@
       </div>
     </div>
   </div>
+  <button class="zb-toggle" type="button" aria-pressed="false"><span class="zb-toggle__dot" aria-hidden="true"></span><span>Как это собрано на Тильде</span></button>
 </section>
 
 </main>
 
 <!-- shared:footer:start -->
-<footer class="footer">
+<footer class="footer" data-tilda="Стандартный блок · подвал">
   <div class="container">
     <div class="footer__grid">
       <div class="footer__about">
