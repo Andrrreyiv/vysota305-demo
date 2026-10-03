@@ -50,7 +50,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:18px;font:600 13px/1.2 var(--font-body);letter-spacing:.14em;text-transform:uppercase;color:var(--brand-strong)}
 .eyebrow::before{content:"";width:28px;height:2px;background:currentColor}
 .on-ink .eyebrow,.hero .eyebrow{color:var(--brand-on-ink)}
-.h2{font-size:30px;line-height:1.12}
+.h2{font-size:clamp(24px,8vw,30px);line-height:1.12;overflow-wrap:break-word}
 .lead{max-width:680px;color:var(--muted)}
 .on-ink .lead{color:var(--muted-on-ink)}
 .section-head{max-width:780px;margin-bottom:44px}
@@ -219,6 +219,7 @@ html.menu-open{overflow:hidden}
 .case__more{display:inline-flex;align-items:center;gap:8px;margin-top:6px;font-size:15px;font-weight:600;color:var(--brand-strong)}
 .case__more .i{transition:transform var(--t-quick) var(--ease)}
 .case:hover .case__more .i{transform:translateX(4px)}
+@media (min-width:640px) and (max-width:979px){.case__body{grid-template-columns:1fr}.case__body>*:not(.case__n){grid-column:1}.case__n{grid-row:auto;font-size:28px}.case__title{font-size:18px;overflow-wrap:break-word}}
 @media (min-width:980px){.case__title{font-size:24px}.case__n{font-size:44px}}
 
 /* ---------- шаги: красная сцена, ZB «фиксация» + «при скролле» ---------- */
@@ -251,7 +252,7 @@ html.menu-open{overflow:hidden}
 /* ---------- тренер: ZB параллакс + текст «при скролле» ---------- */
 .coach{overflow:hidden}
 .runline{margin:-8px 0 48px;white-space:nowrap}
-.runline__text{display:inline-block;padding-left:var(--pad);font:600 clamp(44px,8vw,120px)/1.05 var(--font-display);letter-spacing:-.02em;color:transparent;-webkit-text-stroke:1.5px rgba(250,247,242,.22);will-change:transform}
+.runline__text{display:inline-block;font:600 clamp(40px,6vw,80px)/1.05 var(--font-display);letter-spacing:-.02em;color:transparent;-webkit-text-stroke:1.5px rgba(250,247,242,.22);will-change:transform}
 .coach__grid{display:grid;gap:40px}
 .coach__photo{position:relative;max-width:520px}
 .coach__photo img{width:100%}
@@ -393,7 +394,7 @@ html.menu-open{overflow:hidden}
 .crumbs a{display:inline-block;padding:14px 0;color:var(--muted);text-decoration:none}
 .crumbs a:hover{color:var(--brand-strong)}
 .crumbs li+li::before{content:"/";margin-right:8px;opacity:.5}
-.page__title{font-size:clamp(26px,7.4vw,32px);line-height:1.12}
+.page__title{font-size:clamp(21px,6.4vw,32px);line-height:1.12;overflow-wrap:break-word;hyphens:auto}
 .article__date{display:block;margin-bottom:12px;font:600 13px/1.2 var(--font-body);letter-spacing:.14em;text-transform:uppercase;color:var(--brand-strong)}
 .article__cover{margin-top:32px}
 .article__cover img{width:auto;max-width:100%;max-height:min(78vh,760px);border-radius:var(--r-lg)}
@@ -454,6 +455,8 @@ html.menu-open{overflow:hidden}
 .js .reveal.is-in{opacity:1;transform:none;transition:opacity var(--t-slow) var(--ease),transform var(--t-slow) var(--ease);transition-delay:calc(var(--i,0) * var(--stagger))}
 
 @media (prefers-reduced-motion:reduce){
+  .runline{white-space:normal}
+  .runline__text{display:block;padding-inline:var(--pad)}
   *,*::before,*::after{animation:none!important;transition:none!important}
   .js .reveal,.js .hero__num,.js .hero__frame,.js .hero .scale__fill,.js .hero .scale__rise,.js .hero__photo img{opacity:1;translate:none;scale:none;transform:none}
 }

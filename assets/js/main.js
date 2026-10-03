@@ -1,5 +1,4 @@
-/* «Высота 3.05», демо v2. Всё движение повторяет приёмы Zero Block: появление, пошаговая анимация
-   («блок на экране», «при скролле», «наведение», «цикл»), параллакс от прокрутки и от мыши, фиксация, тултип. */
+/* «Высота 3.05», демо v2. Движение повторяет приёмы Zero Block (см. docs/demo-tilda-mapping.md). */
 (function () {
   var d = document, w = window, root = d.documentElement;
   var reduce = w.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -97,7 +96,10 @@
       el.style.transform = 'translate3d(0,' + px((r.top + r.height / 2 - vh / 2) * el.dataset.speed) + ',0)';
     });
     runs.forEach(function (el) {
-      el.style.transform = 'translate3d(' + px(el.parentNode.getBoundingClientRect().top * el.dataset.scrollX) + ',0,0)';
+      /* за время на экране надпись проходит целиком */
+      var r = el.parentNode.getBoundingClientRect(), a = vh * 0.9, b = (header ? header.offsetHeight : 0) + vh * 0.12;
+      var p = Math.min(1, Math.max(0, (a - r.top) / (a - b)));
+      el.style.transform = 'translate3d(' + px(r.width * 0.15 + p * (r.width * 0.65 - el.offsetWidth)) + ',0,0)';
     });
     if (track && len) {
       var t = track.getBoundingClientRect().top, aim = vh * 0.6, p = Math.min(1, Math.max(0, (aim - t - y0) / len));
